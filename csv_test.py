@@ -28,6 +28,7 @@ def scv_write():#Запись в сsv файл для windows
 
 def csv_read(way):
     table = [None] * 8
+    ter = 0
     with open(way,"r") as file:
         reader = csv.reader(file,delimiter = ";")
         count = 0
@@ -36,11 +37,13 @@ def csv_read(way):
             for i in line:
                 if i == "1":
                     byte += 1
+                    ter += 1
                 elif i == "0":
                     pass
                 else:
                     print("ERROR csv Karno")
                     return -1
+                
                 byte = byte << 1
             byte = byte >> 1
             #table[count] = chr(a)
@@ -49,6 +52,11 @@ def csv_read(way):
         return table
 
 if __name__ == "__main__":
-    a = csv_read("C:\\PROGRAMS\\NTO\\csv\\Karno_1.csv")
-    for i in a: print(hex(i))
+    bytes_csv = csv_read("C:\\PROGRAMS\\NTO\\csv\\Karno_1.csv")
+    for i in bytes_csv: print(hex(i))
+    big_byte = bytes_csv[0]
+    for j in range(7):
+        big_byte = big_byte << 8
+        big_byte += bytes_csv[j + 1]
+
     
