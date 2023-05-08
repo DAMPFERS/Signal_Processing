@@ -32,23 +32,23 @@ def csv_read(way):
         reader = csv.reader(file,delimiter = ";")
         count = 0
         for line in reader:
-            a = 0
+            byte = 0
             for i in line:
                 if i == "1":
-                    a += 1
+                    byte += 1
                 elif i == "0":
                     pass
                 else:
                     print("ERROR csv Karno")
                     return -1
-                a = a << 1
-            a = a >> 1
-            table[count] = chr(a)
-            print(len(table[count]))
+                byte = byte << 1
+            byte = byte >> 1
+            #table[count] = chr(a)
+            table[count] = byte
             count += 1
         return table
 
 if __name__ == "__main__":
-    a = csv_read("C:\PROGRAMS\Python\Server\Тест\CSV\Karno_1.csv")
-    print(a)
+    a = csv_read("C:\\PROGRAMS\\NTO\\csv\\Karno_1.csv")
+    for i in a: print(hex(i))
     
