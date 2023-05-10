@@ -46,7 +46,6 @@ def csv_read(way):
                 
                 byte = byte << 1
             byte = byte >> 1
-            #table[count] = chr(a)
             table[count] = byte
             count += 1
         return table
@@ -54,9 +53,5 @@ def csv_read(way):
 if __name__ == "__main__":
     bytes_csv = csv_read("C:\\PROGRAMS\\NTO\\csv\\Karno_1.csv")
     for i in bytes_csv: print(hex(i))
-    big_byte = bytes_csv[0]
-    for j in range(7):
-        big_byte = big_byte << 8
-        big_byte += bytes_csv[j + 1]
 
     
